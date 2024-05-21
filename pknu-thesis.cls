@@ -3,8 +3,8 @@
 %
 % 							PKNU Graduate thesis LaTeX class
 %
-% @version      2.2
-% @releasedate  Jan 5th, 2024
+% @version      2.3
+% @releasedate  May 21th, 2024
 %
 % @author       Kwon, Yong 권용
 %               mailto:rainstar77@pukyong.ac.kr
@@ -30,7 +30,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{PKNU-thesis}[2024/01/05 v2.2 Unofficial PKNU Thesis document class]
+\ProvidesClass{PKNU-thesis}[2024/05/21 v2.3 Unofficial PKNU Thesis document class]
 
 %% 옵션 설정을 위한 boolean 변수선언
 \newif\if@isDoctor
@@ -626,17 +626,22 @@ urlcolor=darkcyan,          %cyan
 		\if@isDoctor{
 			\fontsize{10pt}{10}\selectfont{Approved by: \\[2cm]
 			\begin{tabular}{ll}
-				\includegraphics[width=0.35\textwidth]{\@refereeChiefsign} & \\[-0.5cm]
+				\ifthenelse{\equal{\@refereeChiefsign}{}}{}{
+				\includegraphics[width=0.35\textwidth]{\@refereeChiefsign}} & \\[-0.5cm]
 				\rule{6cm}{0.5pt} & \\[-0.1cm]
 				(Chairman)~~~~\@refereeChief & \\[1.5cm]
-				\includegraphics[width=0.35\textwidth]{\@refereeSecondsign} &
-				\includegraphics[width=0.35\textwidth]{\@refereeThirdsign} \\[-0.5cm]
+				\ifthenelse{\equal{\@refereeSecondsign}{}}{}{
+				\includegraphics[width=0.35\textwidth]{\@refereeSecondsign}} &
+				\ifthenelse{\equal{\@refereeThirdsign}{}}{}{
+				\includegraphics[width=0.35\textwidth]{\@refereeThirdsign}} \\[-0.5cm]
 				\rule{6cm}{0.5pt}\hspace{1cm} &
 				\rule{6cm}{0.5pt}\hspace{1cm} \\[-0.1cm]
 				(Member)~~~~\@refereeSecond &
                 (Member)~~~~\@refereeThird \\[1.5cm]
-                \includegraphics[width=0.35\textwidth]{\@refereeFourthsign} &
-                \includegraphics[width=0.35\textwidth]{\@refereeFifthsign} \\[-0.5cm]
+				\ifthenelse{\equal{\@refereeFourthsign}{}}{}{
+                \includegraphics[width=0.35\textwidth]{\@refereeFourthsign}} &
+				\ifthenelse{\equal{\@refereeFifthsign}{}}{}{
+                \includegraphics[width=0.35\textwidth]{\@refereeFifthsign}} \\[-0.5cm]
                 \rule{6cm}{0.5pt}\hspace{1cm} &
                 \rule{6cm}{0.5pt}\hspace{1cm} \\[-0.1cm]
                 (Member)~~~~\@refereeFourth &
@@ -647,13 +652,16 @@ urlcolor=darkcyan,          %cyan
 			\begin{center}
 				\fontsize{10pt}{10}\selectfont{Approved by:\\[1.5cm]
 				\begin{tabular}{c}
-					\includegraphics[width=0.4\textwidth]{\@refereeChiefsign} \\[-0.5cm]
+					\ifthenelse{\equal{\@refereeChiefsign}{}}{}{
+					\includegraphics[width=0.4\textwidth]{\@refereeChiefsign}} \\[-0.5cm]
 					\rule{8cm}{0.5pt}\\[-0.0cm]
 					(Chairman)~~~~\@refereeChief\\[1.5cm]
-					\includegraphics[width=0.4\textwidth]{\@refereeSecondsign} \\[-0.5cm]
+					\ifthenelse{\equal{\@refereeSecondsign}{}}{}{
+					\includegraphics[width=0.4\textwidth]{\@refereeSecondsign}} \\[-0.5cm]
 					\rule{8cm}{0.5pt}\\[-0.0cm]
 					(Member)~~~~\@refereeSecond\\[1.5cm]
-					\includegraphics[width=0.4\textwidth]{\@refereeThirdsign} \\[-0.5cm]
+					\ifthenelse{\equal{\@refereeThirdsign}{}}{}{
+					\includegraphics[width=0.4\textwidth]{\@refereeThirdsign}} \\[-0.5cm]
 					\rule{8cm}{0.5pt}\\[-0.0cm]
 					(Member)~~~~\@refereeThird\\[1.5cm]
 				\end{tabular}}
