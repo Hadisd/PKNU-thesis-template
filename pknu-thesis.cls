@@ -453,6 +453,24 @@ urlcolor=darkcyan,          %cyan
 }
 \@onlypreamble{\refereedate}
 
+%% 심사위원 날짜 영문표기
+\newcommand{\refereeMonthEng}{%
+	\ifcase\@refereeMonth
+	\or January% 1
+	\or February% 2
+	\or March% 3
+	\or April% 4
+	\or May% 5
+	\or June% 6
+	\or July% 7
+	\or August% 8
+	\or September% 9
+	\or October% 10
+	\or November% 11
+	\or December% 12
+	\fi
+}
+
 
 \AtBeginDocument{%                           % \begin{document}와 함께 실행
 	\if@isFinal                             % final 옵션이 지정되어 있으면
@@ -601,7 +619,7 @@ urlcolor=darkcyan,          %cyan
 				{\fontsize{22pt}{22}\selectfont{\@authorKor 의 경영학석사 학위논문을 인준함.}}{}
 				\\[1.5cm]
 			\fi
-			\fontsize{12pt}{12}\selectfont{\@approvalYear년 \@approvalMonth월 \@approvalDay일} \\[9cm]
+			\fontsize{12pt}{12}\selectfont{\@refereeYear년 \@refereeMonth월 \@refereeDay일} \\[9cm]
 			\if@isDoctor
 				\begin{tabular}{lllllll}
 						\fontsize{16pt}{16}\selectfont 위~~원~~장 &  & \fontsize{16pt}{16}\selectfont 이학박사 &  & \fontsize{16pt}{16}\selectfont \@refereeChief &  & \fontsize{16pt}{16}\selectfont (인) \\[1em]
@@ -668,7 +686,7 @@ urlcolor=darkcyan,          %cyan
 			\end{center}
 		\fi
 		\begin{center}
-			\fontsize{12pt}{12}\selectfont{\approvalMonthEng~\@approvalDay, \@approvalYear}
+			\fontsize{12pt}{12}\selectfont{\refereeMonthEng~\@refereeDay, \@refereeYear}
 		\end{center} \newpage
 	\fi
 }
